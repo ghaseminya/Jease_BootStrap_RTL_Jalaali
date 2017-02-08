@@ -60,7 +60,7 @@ public class Setup extends Div {
 	public void setupParameter() {
 		if (Database.query(Parameter.class).isEmpty()) {
 			for (Parameter parameter : new Parameter[] {
-					new Parameter(Names.JEASE_SITE_DESIGN, "simple"),
+					new Parameter(Names.JEASE_SITE_DESIGN, "persian"),
 					new Parameter(Names.JEASE_REVISION_COUNT, "10"),
 					new Parameter(Names.JEASE_REVISION_DAYS, "30") }) {
 				Database.save(parameter);
@@ -72,7 +72,7 @@ public class Setup extends Div {
 		if (Nodes.getRoot() == null) {
 			Folder folder = new Folder();
 			folder.setId("");
-			folder.setTitle(I18N.get("JeaseCMS"));
+			folder.setTitle("سیستم مدیرت محتوای جیز!");
 			folder.setLastModified(new Date());
 			folder.setVisible(true);
 			Nodes.setRoot(folder);
@@ -80,7 +80,7 @@ public class Setup extends Div {
 
 			Text text = new Text();
 			text.setId("index.html");
-			text.setTitle("Welcome to Jease!");
+			text.setTitle("به جیز خوش آمدید");
 			text.setContent("<h2>This page was automatically created by the setup process.</h2><p>Feel free to <i>edit</i> or <b>delete</b> it.</p>");
 			text.setLastModified(new Date());
 			text.setParent(folder);

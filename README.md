@@ -7,8 +7,8 @@ Add Jalaali Calendar with ICU4J to Jease and create cew BootStrap theme for Jeas
 Technologies
 ------------
 
-* [ZK](http://zk.org)
-* [Bootstrap](http://getbootstrap.com/)
-* [ICU4J](http://)
-* [xwiki](http://)
-* [Lucene](http://lucene.apache.com)
+* [ZK](https://www.zkoss.org/)
+* [Bootstrap RTL for mb-programmer](https://github.com/mb-programmer/modern-business-rtl)
+* [ICU4J](http://site.icu-project.org/)
+* [xwiki](http://www.xwiki.org/)
+* [Lucene](https://lucene.apache.org/core/corenews.html)

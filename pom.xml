@@ -8,7 +8,7 @@
     <name>JeaseCMS_Jalaali_RTL</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
     </properties>
     <repositories>
         <repository>
@@ -25,6 +25,13 @@
         </repository>
     </repositories>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         <dependency>
             <groupId>com.db4o</groupId>
             <artifactId>db4o</artifactId>
