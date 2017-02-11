@@ -72,7 +72,7 @@ public class Setup extends Div {
 		if (Nodes.getRoot() == null) {
 			Folder folder = new Folder();
 			folder.setId("");
-			folder.setTitle("سیستم مدیرت محتوای جیز!");
+			folder.setTitle("جیز");
 			folder.setLastModified(new Date());
 			folder.setVisible(true);
 			Nodes.setRoot(folder);
@@ -81,7 +81,7 @@ public class Setup extends Div {
 			Text text = new Text();
 			text.setId("index.html");
 			text.setTitle("به جیز خوش آمدید");
-			text.setContent("<h2>This page was automatically created by the setup process.</h2><p>Feel free to <i>edit</i> or <b>delete</b> it.</p>");
+			text.setContent("<h2>این صفحه به شکل خودکار در فرایند راه اندازی ساخته شده است!</h2><p>به راحتی می توانید<i>ویرایش</i> یا <b>حذف</b> کنید.</p>");
 			text.setLastModified(new Date());
 			text.setParent(folder);
 			Nodes.save(text);

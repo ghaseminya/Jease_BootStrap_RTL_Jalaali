@@ -83,20 +83,14 @@
                     					</li>
                     				<% } %>
                 </ul>
-                <div class="nav navbar-nav navbar-left" >
-                                <form action="<%=request.getContextPath() %><%=root.getPath()%>" method="get">
-                                                    			<input style="margin-top:12px" type="text" name="query" <% if(request.getParameter("query") != null) { %>value="<%= StringEscapeUtils.escapeHtml4(request.getParameter("query")) %>"<% } else { %>value="جستجو..." onfocus="this.value='';"<% } %> />
-                                                    			<input type="hidden" name="page" value="/site/service/Search.jsp" />
-                                </form>
-                                </div>
-                 </div>
+             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     <c:if test="${pname.equals('/index.html')}">
         <!-- Header Carousel -->
-        <header id="myCarousel" class="carousel slide">
+        <header id="myCarousel" class="carousel slide" style="margin-bottom:20px">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -167,7 +161,68 @@
     </c:if>
 
         <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-4">
+            <!-- Blog Search Well -->
+                        <div class="well">
+                            <h4>جستجو در <%=root.getTitle() %></h4>
+
+                            <form class="input-group" action="<%=request.getContextPath() %><%=root.getPath()%>" method="get">
+                            	<input class="form-control" type="text" name="query" <% if(request.getParameter("query") != null) { %>value="<%= StringEscapeUtils.escapeHtml4(request.getParameter("query")) %>"<% } else { %>value="چیزی تایپ کنید!" onfocus="this.value='';"<% } %> >
+                            	    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </input>
+                                <input type="hidden" name="page" value="/site/service/Search.jsp" />
+                             </form>
+
+                            <!-- /.input-group -->
+                        </div>
+
+                        <!-- Blog Categories Well -->
+                        <div class="well">
+                                                                <h2><%=((Content) content.getParent()).getTitle()%></h2>
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    			<ul>
+                                    			<% for (Content item : Navigations.getItems((Content) content.getParent())) { %>
+                                    				<% if (item instanceof Topic) { %>
+                                    					</ul><h2><%=item.getTitle()%></h2><ul>
+                                    				<% } else { %>
+                                    				<li<%=item == content ? " class=\"current\"" : ""%>><a href="<%=request.getContextPath() %><%=item.getPath()%>"><%=item.getTitle()%></a></li>
+                                    			<% } %>
+                                    		<% } %>
+                                    			</ul>
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+
+                        <!-- Side Widget Well -->
+                        <div class="well">
+                            <h4>اخبار جیز</h4>
+                            <%
+                            		News[] news = Navigations.getNews((Content) content.getParent());
+                            		if(ArrayUtils.isNotEmpty(news)) {
+                            			for (News item : news) {
+                            	%>
+                            			<h2><%=item.getTitle()%></h2>
+                            			<% if (item.getDate() != null) { %>
+                            				<div class="date"><%=String.format("%tF", item.getDate())%></div>
+                            			<%} %>
+                            			<% if (StringUtils.isBlank(item.getTeaser())) { %>
+                            				<%=item.getStory()%>
+                            			<% } else { %>
+                            				<p><%=item.getTeaser()%><br />
+                            				<a href="<%=request.getContextPath() %><%=item.getPath()%>?print">More...</a>
+                            				</p>
+                            			<% } %>
+                            		<% } %>
+                            	<% } %>
+                        </div>
+        </div>
+        <div class="col-md-8">
         <% pageContext.include((String) request.getAttribute("Page.Template")); %>
         <% Content latestChange = Navigations.getLatestContribution(content); %>
         			آخرین ویرایش در
@@ -175,28 +230,6 @@
         			<% if (latestChange.getEditor() != null) { %>
         				توسط <%=latestChange.getEditor().getName()%>
         			<% }%>
-        			<br/>
-        			<div id="news">
-                    	<%
-                    		News[] news = Navigations.getNews((Content) content.getParent());
-                    		if(ArrayUtils.isNotEmpty(news)) {
-                    			for (News item : news) {
-                    	%>
-                    			<h2><%=item.getTitle()%></h2>
-                    			<% if (item.getDate() != null) { %>
-                    				<div class="date"><%=String.format("%tF", item.getDate())%></div>
-                    			<%} %>
-                    			<% if (StringUtils.isBlank(item.getTeaser())) { %>
-                    				<%=item.getStory()%>
-                    			<% } else { %>
-                    				<p><%=item.getTeaser()%><br />
-                    				<a href="<%=request.getContextPath() %><%=item.getPath()%>?print">More...</a>
-                    				</p>
-                    			<% } %>
-                    		<% } %>
-                    	<% } %>
-
-                    </div>
 
                 </div>
            </div><!-- /.row -->
