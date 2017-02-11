@@ -1,2 +1,3 @@
-
-&copy; <%=sdy.format(latestChange.getLastModified())%> <a href="http://jease.ir/">jease.ir</a>
+<a href="http://jease.ir/">جیز</a>
+<br/>
+<%=sdy.format(latestChange.getLastModified())%>  &copy;

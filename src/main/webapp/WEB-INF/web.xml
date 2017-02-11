@@ -10,7 +10,7 @@
             environment.
         </description>
         <param-name>JEASE_DEFAULT_LOCALE</param-name>
-        <param-value></param-value>
+        <param-value>fa</param-value>
     </context-param>
 
     <context-param>

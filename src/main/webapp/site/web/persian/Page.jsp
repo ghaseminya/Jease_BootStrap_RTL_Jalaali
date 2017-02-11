@@ -200,8 +200,10 @@
     <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p class="text-center">
-                        <%@include file="/site/service/Copyright.jsp" %> | طراحی شده توسط <a href="https://github.com/ghaseminya">محمدقاسمی‌نیا</a>
+                        <p class="text-center" dir="rtl">
+                          طراحی شده توسط <a href="https://github.com/ghaseminya">محمدقاسمی‌نیا</a>
+                          |
+                           <%@include file="/site/service/Copyright.jsp" %>
                         </p>
                     </div>
                 </div>
