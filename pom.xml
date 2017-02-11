@@ -4,7 +4,7 @@
     <groupId>org.jease</groupId>
     <artifactId>jease</artifactId>
     <packaging>war</packaging>
-    <version>3.2</version>
+    <version>4.2</version>
     <name>JeaseCMS_Jalaali_RTL</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
