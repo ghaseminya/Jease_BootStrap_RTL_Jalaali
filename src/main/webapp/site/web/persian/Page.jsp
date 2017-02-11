@@ -22,7 +22,7 @@
 
 	ULocale  uLocale = new ULocale("fa_IR");
     com.ibm.icu.text.SimpleDateFormat sdf=new PersianDateFormat("dd MMMM YYYY ساعت HH:MM ",uLocale);
-    com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("YYYY/MM/dd",uLocale);
+    com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("dd MMMM YYYY",uLocale);
     com.ibm.icu.text.SimpleDateFormat sdy=new PersianDateFormat("YYYY",uLocale);
 	request.setAttribute("pname", pname);
 
@@ -58,7 +58,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <%@include file="/site/service/Feeds.jsp" %>
+
 </head>
 <body>
 <!-- Navigation -->
@@ -209,13 +209,13 @@
                             	%>
                             			<h2><%=item.getTitle()%></h2>
                             			<% if (item.getDate() != null) { %>
-                            				<div class="date"><%=String.format("%tF", item.getDate())%></div>
+                            				<div class="date"><%=sdn.format(item.getDate())%></div>
                             			<%} %>
                             			<% if (StringUtils.isBlank(item.getTeaser())) { %>
                             				<%=item.getStory()%>
                             			<% } else { %>
                             				<p><%=item.getTeaser()%><br />
-                            				<a href="<%=request.getContextPath() %><%=item.getPath()%>?print">More...</a>
+                            				<a href="<%=request.getContextPath() %><%=item.getPath()%>?print">مابقی خبر...</a>
                             				</p>
                             			<% } %>
                             		<% } %>
