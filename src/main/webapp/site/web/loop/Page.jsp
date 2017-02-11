@@ -101,7 +101,7 @@
 	</div>
 	<div id="footer">
 	<p>
-		<%@include file="/site/service/Copyright.jsp" %> | Design by <a href="http://connormckelvey.com">Connor McKelvey</a>
+		 | Design by <a href="http://connormckelvey.com">Connor McKelvey</a>
 		<br />
 		<%@include file="/site/service/Designswitch.jsp" %>
 		</p>

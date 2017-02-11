@@ -1,8 +1,5 @@
 <%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="jease.cms.domain.News"%>
-<%@page import="com.ibm.icu.text.SimpleDateFormat"%>
-<%@page import="com.ghasemkiani.util.icu.PersianDateFormat"%>
-<%@page import="com.ibm.icu.util.ULocale"%>
 <%
 	News news = (News) request.getAttribute("Node");
 	if (session.getAttribute(news.getPath()) != null) {
