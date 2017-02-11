@@ -11,6 +11,7 @@
 <%@page import="com.ghasemkiani.util.icu.PersianCalendar"%>
 <%@page import="com.ibm.icu.text.DateFormat"%>
 <%@page import="com.ibm.icu.text.SimpleDateFormat"%>
+<%@page import="com.ghasemkiani.util.icu.PersianDateFormat"%>
 <%@page import="com.ibm.icu.util.ULocale"%>
 <%@page import="java.util.TimeZone"%>
 
@@ -18,12 +19,10 @@
 	Content content = (Content) request.getAttribute("Node"); 
 	Content root = (Content) request.getAttribute("Root");
 	String pname=root.getPath();
-	ULocale  uLocale = new ULocale("fa_IR");
-        TimeZone timeZone = TimeZone.getTimeZone(TimeZone.getDefault().getID());
-        PersianCalendar calendar = new PersianCalendar( uLocale);
-        SimpleDateFormat sds =(SimpleDateFormat)calendar.getDateTimeFormat(DateFormat.MEDIUM,DateFormat.MEDIUM,uLocale);
-                //date=sds.format(calendar.getTime());
-        request.setAttribute("pname", pname);
+    com.ibm.icu.text.SimpleDateFormat sdf=new PersianDateFormat("YYYY/MM/dd HH:MM");
+    com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("YYYY/MM/dd");
+    com.ibm.icu.text.SimpleDateFormat sdy=new PersianDateFormat("YYYY");
+	request.setAttribute("pname", pname);
 
 %>
 <!DOCTYPE html>
@@ -146,8 +145,9 @@
     <c:if test="${!pname.equals('/')}">
     <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">پرسش و پاسخ
-                        <small>زیر‌عنوان</small>
+                    <h1 class="page-header">
+                    <%=root.getTitle() %>
+
                     </h1>
                     <ol class="breadcrumb">
                     <% for (Content parent : Navigations.getBreadcrumb(root, content)) { %>
@@ -163,8 +163,7 @@
         <% pageContext.include((String) request.getAttribute("Page.Template")); %>
         <% Content latestChange = Navigations.getLatestContribution(content); %>
         			آخرین ویرایش در
-        			<%calendar.setTime( latestChange.getLastModified());%>
-        			<%=sds.format(calendar.getTime())%>
+        			<%=sdf.format(latestChange.getLastModified())%>
         			<% if (latestChange.getEditor() != null) { %>
         				توسط <%=latestChange.getEditor().getName()%>
         			<% }%>
@@ -201,7 +200,9 @@
     <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p class="text-center">حق انتشار با جیز! ۱۳۹۵</p>
+                        <p class="text-center">
+                        <%@include file="/site/service/Copyright.jsp" %> | طراحی شده توسط <a href="https://github.com/ghaseminya">محمدقاسمی‌نیا</a>
+                        </p>
                     </div>
                 </div>
     </footer>
