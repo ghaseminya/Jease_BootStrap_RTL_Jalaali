@@ -19,9 +19,11 @@
 	Content content = (Content) request.getAttribute("Node"); 
 	Content root = (Content) request.getAttribute("Root");
 	String pname=content.getPath();
-    com.ibm.icu.text.SimpleDateFormat sdf=new PersianDateFormat("YYYY/MM/dd HH:MM");
-    com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("YYYY/MM/dd");
-    com.ibm.icu.text.SimpleDateFormat sdy=new PersianDateFormat("YYYY");
+
+	ULocale  uLocale = new ULocale("fa_IR");
+    com.ibm.icu.text.SimpleDateFormat sdf=new PersianDateFormat("dd MMMM YYYY ساعت HH:MM ",uLocale);
+    com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("YYYY/MM/dd",uLocale);
+    com.ibm.icu.text.SimpleDateFormat sdy=new PersianDateFormat("YYYY",uLocale);
 	request.setAttribute("pname", pname);
 
 %>
