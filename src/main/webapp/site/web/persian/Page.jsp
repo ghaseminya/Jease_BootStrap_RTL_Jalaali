@@ -18,7 +18,7 @@
 <% 
 	Content content = (Content) request.getAttribute("Node"); 
 	Content root = (Content) request.getAttribute("Root");
-	String pname=root.getPath();
+	String pname=content.getPath();
     com.ibm.icu.text.SimpleDateFormat sdf=new PersianDateFormat("YYYY/MM/dd HH:MM");
     com.ibm.icu.text.SimpleDateFormat sdn=new PersianDateFormat("YYYY/MM/dd");
     com.ibm.icu.text.SimpleDateFormat sdy=new PersianDateFormat("YYYY");
@@ -81,13 +81,18 @@
                     					</li>
                     				<% } %>
                 </ul>
-            </div>
+                <div class="nav navbar-nav navbar-left" >
+                                <form action="<%=request.getContextPath() %><%=root.getPath()%>" method="get">
+                                                    			<input style="margin-top:12px" type="text" name="query" <% if(request.getParameter("query") != null) { %>value="<%= StringEscapeUtils.escapeHtml4(request.getParameter("query")) %>"<% } else { %>value="جستجو..." onfocus="this.value='';"<% } %> />
+                                                    			<input type="hidden" name="page" value="/site/service/Search.jsp" />
+                                </form>
+                                </div>
+                 </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
-    <c:if test="${pname.equals('/')}">
+    <c:if test="${pname.equals('/index.html')}">
         <!-- Header Carousel -->
         <header id="myCarousel" class="carousel slide">
             <!-- Indicators -->
@@ -142,7 +147,8 @@
             </a>
         </header>
     </c:if>
-    <c:if test="${!pname.equals('/')}">
+    <div class="container">
+    <c:if test="${!pname.equals('/index.html')}">
     <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
@@ -157,9 +163,9 @@
                 </div>
     </div>
     </c:if>
-    <!-- Page Content -->
-    <div class="container">
+
         <div class="row">
+        <div class="col-lg-12">
         <% pageContext.include((String) request.getAttribute("Page.Template")); %>
         <% Content latestChange = Navigations.getLatestContribution(content); %>
         			آخرین ویرایش در
@@ -189,13 +195,8 @@
                     	<% } %>
 
                     </div>
-                    <div >
-                    <form action="<%=request.getContextPath() %><%=root.getPath()%>" method="get">
-                                        			<input type="text" name="query" <% if(request.getParameter("query") != null) { %>value="<%= StringEscapeUtils.escapeHtml4(request.getParameter("query")) %>"<% } else { %>value="Enter your search..." onfocus="this.value='';"<% } %> />
-                                        			<input type="hidden" name="page" value="/site/service/Search.jsp" />
-                    </form>
-                    </div>
 
+                </div>
            </div><!-- /.row -->
     <footer>
                 <div class="row">
