@@ -41,7 +41,7 @@
     </context-param>
 
     <error-page>
-        <location>/site/service/Error.jsp</location>
+        <location>/site/service/404.jsp</location>
     </error-page>
 
     <jsp-config>

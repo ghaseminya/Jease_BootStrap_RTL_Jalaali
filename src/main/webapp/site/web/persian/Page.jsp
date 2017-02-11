@@ -13,7 +13,7 @@
 <%@page import="com.ibm.icu.text.SimpleDateFormat"%>
 <%@page import="com.ghasemkiani.util.icu.PersianDateFormat"%>
 <%@page import="com.ibm.icu.util.ULocale"%>
-<%@page import="java.util.TimeZone"%>
+<%@page import="java.util.Date"%>
 
 <% 
 	Content content = (Content) request.getAttribute("Node"); 
